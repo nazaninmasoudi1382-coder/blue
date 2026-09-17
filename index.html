@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day Counter</title>
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+
+#counter {
+  font-family: Arial, sans-serif;
+  font-size: 42px;
+  font-weight: 300;
+  font-style: italic;
+}
+</style>
+</head>
+
+<body>
+
+<div id="counter"></div>
+
+<script>
+const startDate = new Date("2026-09-17T00:00:00");
+const startNumber = 187;
+
+function updateCounter() {
+  const now = new Date();
+  const difference = now - startDate;
+  const daysPassed = Math.floor(
+    difference / (1000 * 60 * 60 * 24)
+  );
+
+  const currentNumber = startNumber + Math.max(0, daysPassed);
+
+  document.getElementById("counter").textContent =
+    currentNumber + " Day";
+}
+
+updateCounter();
+setInterval(updateCounter, 60000);
+</script>
+
+</body>
+</html>
